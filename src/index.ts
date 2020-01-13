@@ -1,11 +1,13 @@
-import { FootballMatchReader } from './refactor-v1/FootballMatchReader';
+import { FootballMatchReader } from './FootballMatchReader';
+import { CsvFileReader } from './CsvFileReader';
 
-const footballMatchReader = new FootballMatchReader('football.csv');
-footballMatchReader.read();
+const csvFileReader = new CsvFileReader('football.csv');
+const footballMatchReader = new FootballMatchReader(csvFileReader);
+footballMatchReader.load();
 
 let manUnitedWins = 0;
 
-for (let match of footballMatchReader.data) {
+for (let match of footballMatchReader.matches) {
   if (match[1] === 'Man United' && match[5] === 'H') {
     manUnitedWins++;
   } else if (match[2] === 'Man United' && match[5] === 'A') {
@@ -14,4 +16,4 @@ for (let match of footballMatchReader.data) {
 }
 
 console.log(`Match win ${manUnitedWins}`);
-// console.log(footballMatchReader.data);
+console.log(footballMatchReader.matches);
