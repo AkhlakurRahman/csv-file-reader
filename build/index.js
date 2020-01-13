@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var CsvFileReader_1 = require("./CsvFileReader");
-var reader = new CsvFileReader_1.CsvFileReader('football.csv');
-reader.read();
+var FootballMatchReader_1 = require("./refactor-v1/FootballMatchReader");
+var footballMatchReader = new FootballMatchReader_1.FootballMatchReader('football.csv');
+footballMatchReader.read();
 var manUnitedWins = 0;
-for (var _i = 0, _a = reader.data; _i < _a.length; _i++) {
+for (var _i = 0, _a = footballMatchReader.data; _i < _a.length; _i++) {
     var match = _a[_i];
     if (match[1] === 'Man United' && match[5] === 'H') {
         manUnitedWins++;
@@ -14,4 +14,4 @@ for (var _i = 0, _a = reader.data; _i < _a.length; _i++) {
     }
 }
 console.log("Match win " + manUnitedWins);
-console.log(reader.data);
+// console.log(footballMatchReader.data);
