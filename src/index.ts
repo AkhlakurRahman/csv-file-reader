@@ -1,3 +1,4 @@
+import { HtmlOutput } from './teamReport/HtmlOutput';
 import { ConsoleReport } from './teamReport/ConsoleReport';
 import { WinAnalysis } from './analyzer/WinAnalysis';
 import { MatchSummary } from './MatchSummary';
@@ -9,8 +10,8 @@ const footballMatchReader = new FootballMatchReader(csvFileReader);
 footballMatchReader.load();
 
 const summary = new MatchSummary(
-  new WinAnalysis('Man United'),
-  new ConsoleReport()
+  new WinAnalysis('Liverpool'),
+  new HtmlOutput()
 );
 
 summary.buildAndPrintReport(footballMatchReader.matches);
